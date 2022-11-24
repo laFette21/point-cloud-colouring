@@ -35,10 +35,7 @@ void MatrixReaderWriter::load(const std::string& path)
 
         _columnNum = countEntries(line);
 
-        if (_maxColNum >= 0 && _columnNum > static_cast<std::size_t>(_maxColNum))
-        {
-            _columnNum = static_cast<std::size_t>(_maxColNum);
-        }
+        bool flag = _maxColNum >= 0;
 
         _rowNum = 1;
 
@@ -49,14 +46,10 @@ void MatrixReaderWriter::load(const std::string& path)
         {
             double x;
             ss >> x;
-            _data.push_back(x);
-        }
-
-        if (ss.tellg() != static_cast<long long>(line.size()))
-        {
-            std::cout << ss.tellg() << std::endl;
-            std::getchar();
-            ss.seekg(static_cast<long long>(line.size()));
+            if (flag && i < static_cast<std::size_t>(_maxColNum))
+            {
+                _data.push_back(x);
+            }
         }
 
         while (std::getline(dataFile, line))
@@ -68,17 +61,18 @@ void MatrixReaderWriter::load(const std::string& path)
             {
                 double x;
                 ss >> x;
-                _data.push_back(x);
+                if (flag && i < static_cast<std::size_t>(_maxColNum))
+                {
+                    _data.push_back(x);
+                }
             }
 
             ++_rowNum;
+        }
 
-            if (ss.tellg() != static_cast<long long>(line.size()))
-            {
-                std::cout << ss.tellg() << std::endl;
-                std::getchar();
-                ss.seekg(static_cast<long long>(line.size()));
-            }
+        if (flag)
+        {
+            _columnNum = static_cast<std::size_t>(_maxColNum);
         }
 
         dataFile.close();

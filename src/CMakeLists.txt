@@ -1,10 +1,10 @@
 set(TARGET_NAME pcc)
 
-add_subdirectory(matrixreaderwriter)
-
 include_directories(
     SYSTEM ${CONAN_INCLUDE_DIRS}
 )
+
+add_subdirectory(matrixreaderwriter)
 
 add_executable(${TARGET_NAME}
     main.cc
