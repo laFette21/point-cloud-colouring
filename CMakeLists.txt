@@ -11,9 +11,8 @@ project(point-cloud-colouring
 # Include cmake files
 include(cmake/settings.cmake)
 include(cmake/compilerWarnings.cmake)
-include(cmake/conanConfig.cmake)
 
-run_conan()
+find_package(OpenCV REQUIRED)
 
 # Enable project warnings
 add_library(project_warnings INTERFACE)
@@ -21,6 +20,3 @@ set_project_warnings(project_warnings FALSE)
 
 # Add the src directory
 add_subdirectory(src)
-
-# Enable testing
-enable_testing()

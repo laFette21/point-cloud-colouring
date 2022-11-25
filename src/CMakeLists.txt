@@ -1,7 +1,7 @@
 set(TARGET_NAME pcc)
 
 include_directories(
-    SYSTEM ${CONAN_INCLUDE_DIRS}
+    SYSTEM ${OpenCV_INCLUDE_DIRS}
 )
 
 add_subdirectory(matrixreaderwriter)
@@ -11,7 +11,7 @@ add_executable(${TARGET_NAME}
 )
 
 target_link_libraries(${TARGET_NAME}
-    ${CONAN_LIBS}
+    ${OpenCV_LIBS}
     matrixreaderwriter
     project_warnings
 )
