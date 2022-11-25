@@ -1,7 +1,7 @@
 ply
 format ascii 1.0
-comment author: Greg Turk
-comment object: another cube
+comment author: Ákos Virágh
+comment object: Colored Point Cloud
 element vertex 14976
 property float x
 property float y

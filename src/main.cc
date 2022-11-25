@@ -4,14 +4,12 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
 
-#include <fstream>
-#include <iostream>
-
 static constexpr const char* WINDOW_NAME = "Point Cloud Colouring";
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
-    if (argc != 3) {
+    if (argc != 3)
+    {
         std::cout << "Usage: " << argv[0] << " <input path> <output path>" << std::endl;
         return 0;
     }
@@ -122,7 +120,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
         if (x >= 0 && y >= 0 && x < canvas.cols && y < canvas.rows)
         {
-            // std::cout << x << " " << y << " " << canvas.at<cv::Vec3b>(y, x) << std::endl;
             leftPointCloudColor[i] = canvas.at<cv::Vec3b>(y, x);
 
             cv::circle(
@@ -165,7 +162,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
         if (x >= 0 && y >= 0 && x < canvas.cols && y < canvas.rows)
         {
-            // std::cout << x << " " << y << " " << canvas.at<cv::Vec3b>(y, x) << std::endl;
             centerPointCloudColor[i] = canvas.at<cv::Vec3b>(y, x);
 
             cv::circle(
@@ -208,7 +204,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
         if (x >= 0 && y >= 0 && x < canvas.cols && y < canvas.rows)
         {
-            // std::cout << x << " " << y << " " << canvas.at<cv::Vec3b>(y, x) << std::endl;
             rightPointCloudColor[i] = canvas.at<cv::Vec3b>(y, x);
 
             cv::circle(
